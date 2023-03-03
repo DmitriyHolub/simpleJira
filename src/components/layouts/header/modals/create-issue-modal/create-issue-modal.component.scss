@@ -1,0 +1,98 @@
+.create-issue-modal-wrapper{
+  height: 100%;
+  width: 100%;
+  mat-dialog-content{
+    height: calc(100% - 70px);
+    font-size: 8px;
+  }
+}
+.header-create-issue-modal{
+  border: 1px split black;
+  background-color: aqua;
+}
+.create-issue-modal-icon-button{
+  background-color:  rgb(255, 255, 255);
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+.create-issue-modal-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  a {
+    padding-left: 4px;
+    font-size: 9px;
+  }
+  mat-label::after{
+    content: "*";
+    color: red;
+
+  }
+}
+
+.create-issue-modal-header__title{
+  font-size: 13px;
+  font-weight: 400;
+}
+.create-issue-modal-info{
+  display: block;
+  margin-top: 5px;
+  font-size: 8px;
+  cursor: pointer;
+}
+.create-issue-modal-footer{
+  height: 25px;
+  font-size: 8px;
+  display: flex;
+  justify-content: space-between;
+  .create-issue-modal-footer__checkbox{
+    margin-left: 10px;
+  }
+  .create-issue-modal-footer__buttons{
+    margin-right: 10px;
+  }
+}
+#createButton{
+  background-color: blue;
+  font-weight: 500;
+}
+#cancelButton{
+  background-color: antiquewhite;
+  font-weight: 500;
+  color: rgb(41, 40, 39);
+}
+.create-issue-modal-buttons{
+  justify-content: end;
+  align-items: center;
+  display: flex;
+  button{
+  height: 24px;
+  font-style: normal;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 8px;
+  align-items: center;
+  display: flex;
+  border: 0px;
+  margin: 0px 4px;
+  background-color:  rgb(255, 255, 255);
+  cursor: pointer;
+  &:hover{
+    transition: opacity 0.3s ease 0s;
+    border-radius: 5%;
+    background-color: rgba(166, 166, 166, 0.3);
+    box-shadow: transparent 0px 0px 0px 2px;
+  }
+}
+}
+
+
+
+
+
+
+

@@ -1,0 +1,161 @@
+@import '../../../theme/variables';
+
+.sidebar-wrapper{
+  display: flex;
+  width: 15px;
+  position:  absolute;
+  z-index: 1;
+  top:2px;
+  transition: all 0.3s;
+  height: 100vh;
+
+  .sidebar-menu{
+    border-right: 1px solid $borderLayoutColor;
+    background-color:  $mainLightBackgroundColour;
+    width: 15px;
+    flex-direction: column;
+    transition: all 0.3s;
+    .sidebar-display-container{
+      transition: all 0.3s;
+      display: none;
+    }
+  }
+}
+.sidebarMenuExpand{
+  transition: all 0.5s;
+  width: 133px;
+  .sidebar-menu{
+    width: 133px;
+    .sidebar-display-container{
+      transition: all 0.5s;
+      display: block;
+    }
+  }
+}
+.sidebar-container{
+  position: absolute;
+}
+.sidebar-project{
+  display: flex;
+  padding: 20px 0px 5px 10px;
+}
+.sidebar-project-logo{
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  margin: auto 7px auto 07px;
+  span{
+    background-image: url(https://theclawiki.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10011?size=xxlarge);
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.sidebar-project-name{
+  display: flex;
+  flex-direction: column;
+  font-size: 5px;
+  h2{
+    font-weight: 600;
+    color: var(--ds-text, #42526E);
+  }
+  span{
+    padding-bottom: 6px;
+  }
+}
+.sidebar-open{
+  position: relative;
+  width: 1px;
+}
+.sidebar-open-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  top:25px;
+  left: -7px;
+  position: absolute;
+  border: 1px solid black;
+  background-color: var(--ds-surface-overlay, #FFFFFF);
+  border-radius: 50%;
+  z-index: 2;
+  transition: background-color 100ms linear 0s, color 100ms linear 0s, opacity 350ms cubic-bezier(0.2, 0, 0, 1) 0s;
+  transform: rotate(180deg);
+  transform-origin: 7px center;
+  &:hover{
+    transition: background-color 100ms linear 0s, color 100ms linear 0s, opacity 350ms cubic-bezier(0.2, 0, 0, 1) 0s;
+    transform: rotate(180deg);
+    transform-origin: 7px center;
+    background-color: var(--ds-surface-overlay, #6c4bff);
+  }
+  svg{
+    width: 100%;
+    height: 100%;
+  }
+  .transformIcon{
+    transform: rotate(180deg);
+  }
+}
+.sidebar-planning-menu{
+  display: none;
+  background-color: #dff1f8;
+  border-radius: 4px;
+  overflow: auto;
+  width: 100%;
+}
+.sidebar-planning{
+  height: 15px;
+  font-size: 7px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .sidebar-planning__menu-container{
+    padding-left: 9px;
+    font-size: 8px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    a{
+      width: 95px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: #b8d4ec;
+        border-radius: 4px;
+      }
+    }
+    .buttonActive{
+      background-color:#b8d4ec;
+      color: blue;
+      border-radius: 4px;
+    }
+    span{
+      margin-left: 10px;
+    }
+  }
+  .sidebar-planning__menu-header{
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    font-weight: 500;
+    &:hover{
+      button{
+        visibility:visible
+      }
+    }
+    button{
+      padding-right: 0px;
+      display: flex;
+      visibility: hidden;
+    }
+  }
+}
+

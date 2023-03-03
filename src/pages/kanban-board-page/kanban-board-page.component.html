@@ -1,0 +1,53 @@
+<div class="kanban-board-wrapper">
+  <div class="kanban-board-container">
+    <span>
+      address/adress
+    </span>
+    <div class="kanban-board-header-panel">
+      <span>
+        <h3>
+          Kanban Board
+        </h3>
+      </span>
+      {{projectName}}
+    </div>
+    <div class="kanban-board-opeartion-panel">
+    </div>
+
+    <div class="progress-spinner" [style.display]="showProgressSpinner ? 'block' : 'none'">
+      <mat-spinner [diameter]="20"></mat-spinner>
+    </div>
+
+    <div class="kanban-board-main-panel">
+      <div class="kanban-board-main-panel-header">
+        <ul>
+          <li *ngFor="let columnData of projectColumsData">
+            <div class="kanban-board-grid-header">
+              <div>
+                {{columnData.name | uppercase}}
+              </div>
+              <div>
+                {{columnData.tickets.length}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div cdkDropListGroup class="kanban-ticket-wrapper">
+        <ul>
+          <li
+            *ngFor="let columnData of projectColumsData"
+            cdkDropList
+            [cdkDropListData]="columnData.tickets"
+            [cdkDropListConnectedTo]="[columnData.name]"
+            (cdkDropListDropped)="drop($event)">
+            <ng-container *ngFor="let ticket of columnData.tickets">
+              <app-kanban-ticket [ticket]="ticket">
+              </app-kanban-ticket>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

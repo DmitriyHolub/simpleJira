@@ -1,0 +1,17 @@
+<mat-toolbar class="create-issue-modal-header" >
+  <div class="create-issue-modal-header__title">{{title}}</div>
+  <div class="create-issue-modal-header__buttons">
+    <button
+      type="button"
+      mat-button
+      mat-raised-button
+      (click)="backClick.emit($event)"
+      [matTooltip]="'Close the dialoge window'"
+      matTooltipPosition="above"
+      matTooltipShowDelay="1000"
+      matTooltipClass="custom-tooltip"
+      mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,21 @@
+.app-wrapper{
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+mat-drawer-container{
+  margin-top:2px ;
+}
+.outlet-wrapper{
+  padding-left: 16px;
+  height: 100%;
+  width: 100%;
+}
+.sidebarCondition{
+  width: -webkit-fill-available;
+  position:  absolute;
+  left: 165px;
+
+}
+
+
