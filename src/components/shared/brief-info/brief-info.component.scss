@@ -1,0 +1,31 @@
+@import '../../../theme/variables';
+// :host{
+//   margin-left: 6px;
+// }
+.brief-info__container{
+  box-sizing: border-box;
+  display: flex;
+  margin: 4px 0px;
+  padding: 2px 6px;
+  font-size: 7px;
+  align-items: center;
+  cursor: pointer;
+  &:hover{
+    background-color: $headerMenuHover;
+   }
+  .brief-info__info{
+   padding: 0px 0px 0px 3px
+  }
+  .brief-info__header{
+   padding-bottom: 3px;
+  }
+  .brief-info__data{
+    font-size: 6px;
+    color: grey;
+  }
+  img{
+    height: 13px;
+    width: 13px;
+  }
+
+}

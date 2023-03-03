@@ -1,0 +1,16 @@
+<div class="brief-info__container" (click)="redirectTo(item)">
+  <img src="../../../assets/icons/ticketIcons/{{item?.icon}}.svg">
+  <div class="brief-info__info">
+    <div class="brief-info__header">
+      {{item.name}}
+    </div>
+    <div class="brief-info__data">
+      <span>
+        {{item.code}}
+      </span>
+      <span>
+        {{item.parentName}}
+      </span>
+    </div>
+  </div>
+</div>

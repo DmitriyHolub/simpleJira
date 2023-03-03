@@ -1,0 +1,140 @@
+<div class="header-wrapper">
+  <div class="header-wrapper-nav">
+    <div class="header-menu-icon">
+      <svg viewBox="0 0 50 50">
+        <path
+          d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+      </svg>
+    </div>
+    <div class="header-wrapper-nav-logo">
+      <img src="../../../assets/images/jira-logo-scaled.png" alt="1">
+    </div>
+    <p>simpleJIRA</p>
+    <ng-container *ngFor="let button of buttons" [ngTemplateOutlet]="headerButton"
+      [ngTemplateOutletContext]="{name:button.name,action: button.action,template:button.template,svgIcon:button.svgIcon}"
+      class="header-buttons">
+    </ng-container>
+    <button class="button" (click)="createIssueButton()">
+      <span>{{buttonName}}</span>
+    </button>
+  </div>
+  <div class="header-wrapper-nav">
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Search</mat-label>
+      <input type="search" matInput placeholder="" value="">
+    </mat-form-field> -->
+    <ng-container *ngFor="let button of iconButtons">
+      <ng-container [ngSwitch]="button.template">
+        <ng-container *ngSwitchCase="'Notifications'" [ngTemplateOutlet]="notificationIconButton"
+          [ngTemplateOutletContext]="{action: button.action,svgIcon:button.svgIcon,tooltip: button.tooltip, notifications: button.notifications}">
+        </ng-container>
+        <ng-container *ngSwitchCase="'iconButton'" [ngTemplateOutlet]="iconButton"
+          [ngTemplateOutletContext]="{action: button.action,svgIcon:button.svgIcon,tooltip: button.tooltip}">
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+  </div>
+</div>
+
+
+
+
+<ng-template #headerButton let-name="name" let-action="action" let-template="template" let-svgIcon="svgIcon">
+  <div class="header-button-wrapper" tabindex="1">
+    <button type="button" (click)="action()" class="header-button" mat-button [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+        <div [ngSwitch]="template">
+          <ng-container *ngSwitchCase="'yourWork'" [ngTemplateOutlet]="yourWork"></ng-container>
+          <ng-container *ngSwitchCase="'projects'" [ngTemplateOutlet]="projects"></ng-container>
+          <ng-container *ngSwitchCase="'filters'" [ngTemplateOutlet]="filters"></ng-container>
+          <ng-container *ngSwitchCase="'dashboards'" [ngTemplateOutlet]="dashboards"></ng-container>
+          <ng-container *ngSwitchCase="'people'" [ngTemplateOutlet]="people"></ng-container>
+          <ng-container *ngSwitchCase="'apps'" [ngTemplateOutlet]="apps"></ng-container>
+        </div>
+      </mat-menu>
+      <span>
+        {{name}}
+      </span>
+      <mat-icon *ngIf="svgIcon" [svgIcon]="svgIcon" role="img" aria-hidden="false">
+      </mat-icon>
+    </button>
+  </div>
+  <ng-template #yourWork>
+    <mat-tab-group animationDuration="0ms" (selectedTabChange)="switchYourWorkTab($event)"
+      (click)="$event.stopPropagation()">
+      <mat-tab label="Assigned to me">
+        <app-header-menu-assigned-to-me></app-header-menu-assigned-to-me>
+      </mat-tab>
+      <mat-tab label="Recent">
+        <app-header-menu-boards></app-header-menu-boards>
+      </mat-tab>
+      <mat-tab label="Boards">
+        <app-header-menu-recent></app-header-menu-recent>
+      </mat-tab>
+    </mat-tab-group>
+  </ng-template>
+
+  <ng-template #projects>
+    <div class="project-menu__container">
+      <span>
+        STARRED
+      </span>
+
+      <div class="project-menu__all-projects" >
+        <ng-container *ngFor="let project of allProjects">
+          <app-brief-info [item]="project" [redirectLink]="'/KanbanBoard'">
+          </app-brief-info>
+        </ng-container>
+      </div>
+      <div class="project-menu__buttons">
+        <div>
+          <button type="button" (click)="ViewAllProjects()">
+            View all projects
+          </button>
+        </div>
+        <div>
+          <button type="button" (click)="CreateProject()">
+            Create project
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #filters>
+    <button mat-menu-item (click)="$event.stopPropagation()">Item 3</button>
+    <button mat-menu-item (click)="$event.stopPropagation()" (click)="change()">Item 4</button>
+  </ng-template>
+
+  <ng-template #dashboards>
+    <button mat-menu-item>Item 5</button>
+    <button mat-menu-item>Item 6</button>
+  </ng-template>
+
+  <ng-template #people>
+    <button mat-menu-item>Item 7</button>
+    <button mat-menu-item>Item 8</button>
+  </ng-template>
+
+  <ng-template #apps>
+    <button mat-menu-item>Item 9</button>
+    <button mat-menu-item>Item 10</button>
+  </ng-template>
+</ng-template>
+
+<ng-template #notificationIconButton let-action="action" let-svgIcon="svgIcon" let-tooltip="tooltip"
+  let-notifications="notifications">
+  <button class="header-icon" (click)="action()" [matBadge]="notifications" mat-raised-button
+    matTooltipClass="custom-tooltip" matBadgeColor="warn" [matTooltip]='tooltip' mat-icon-button color="warn"
+    aria-label="">
+    <mat-icon *ngIf="svgIcon" [svgIcon]="svgIcon" role="img" aria-hidden="false"></mat-icon>
+  </button>
+</ng-template>
+
+<ng-template #iconButton let-action="action" let-svgIcon="svgIcon" let-tooltip="tooltip">
+  <button class="header-icon" (click)="action()" matTooltipClass="custom-tooltip" [matTooltip]="tooltip" mat-icon-button
+    color="warn" aria-label="">
+    <mat-icon *ngIf="svgIcon" [svgIcon]="svgIcon" role="img" aria-hidden="false"></mat-icon>
+  </button>
+</ng-template>

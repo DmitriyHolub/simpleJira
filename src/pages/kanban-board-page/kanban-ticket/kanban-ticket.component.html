@@ -1,0 +1,38 @@
+
+<div (click)="openModal(ticket.id)" [ngClass]="{'disabled': isTicketDisabled}"  cdkDrag class="kanban-ticket-wrapper">
+    <div class="kanban-ticket">
+      <section class="kanban-ticket-name">
+       <span> {{ticket?.name}}</span>
+      </section>
+      <section class="kanban-ticket-created">
+        <div>
+          {{ticket?.dateCreated | date: 'medium'}}
+        </div>
+        <div>
+          {{ticket.priority | ticketPriority }}
+        </div>
+      </section>
+      <section class="kanban-ticket__data-container">
+        <div class="kanban-ticket__data-icons">
+          <div>
+            <img src="../../../assets/icons/ticketIcons/{{ticket?.type}}.svg">
+          </div>
+          <div>
+            <img src="../../../assets/icons/ticketIcons/{{ticket?.priority}}.svg">
+          </div>
+
+
+        </div>
+        <div class="kanban-ticket__data-info">
+          <div class="kanban-ticket__data-code">
+            {{ticket?.code}}
+          </div>
+          <div class="kanban-ticket__data-assignee">
+            {{ticket.assignee | initials}}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+

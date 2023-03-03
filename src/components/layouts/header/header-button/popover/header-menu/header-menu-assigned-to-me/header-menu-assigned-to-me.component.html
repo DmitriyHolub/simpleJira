@@ -1,0 +1,18 @@
+<div>
+  <div class="assigned-tickets" *ngIf="ticketsAssignedToMe?.length != 0; else elseblock">
+    <ng-container *ngFor="let ticket of ticketsAssignedToMe">
+      <app-brief-info   [item]="ticket" [redirectLink] ="'ticket'">
+      </app-brief-info>
+    </ng-container>
+  </div>
+  <div class="assigned-tickets__buttons">
+    <div>
+      <button type="button" (click)="GoTOWorkPage()">
+        Go to your work page
+      </button>
+    </div>
+  </div>
+  <ng-template #elseblock>
+    You have no open issues assigned to you
+  </ng-template>
+</div>

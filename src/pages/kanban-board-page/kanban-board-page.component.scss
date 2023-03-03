@@ -1,0 +1,92 @@
+@import '../../theme/variables';
+
+.kanban-board-wrapper{
+  margin-top:10px;
+  padding-left: 10px;
+  height: 100%;
+  &:first-child {
+    font-size: 7px;
+    height: 15px;
+ }
+ .kanban-board-container{
+  //  height: 100%;
+  //  width: 100%;
+ }
+}
+.kanban-board-header-panel{
+  font-size: 12px;
+  height: 36;
+}
+.kanban-board-opeartion-panel{
+  height: 56px;
+}
+.kanban-board-main-panel{
+  overflow-x: auto;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .kanban-board-main-panel-header{
+    margin-right: 30px;
+    ul{
+      padding-left: 2px;
+      height:25px;
+      font-size: 7px;
+      position: sticky;
+      display: grid;
+      align-items: end;
+      grid-column-gap: 10px;
+      grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+      margin-bottom: 0px;
+      li{
+        list-style: none;
+        font-weight: 400;
+        table-layout: fixed;
+        background: $ticketpanelBackGroundColor;
+        padding: 5px 10px 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+    }
+  }
+  .kanban-ticket-wrapper{
+    min-height: 60px;
+    border-radius: 0 0 4px 4px;
+    overflow: auto;
+    height: 300px; // fix
+    margin: 0px 30px 0px 2px;
+    ul{
+      overflow: auto;
+      margin: 0;
+      padding: 0px;
+      display: grid;
+      grid-column-gap: 10px;
+      grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+      li{
+        cursor: move;
+        min-width: 110px;
+        background: $ticketpanelBackGroundColor;
+        list-style: none;
+        padding: 5px;
+        min-width: 110px;
+        border-radius: 0 0 4px 4px;
+      }
+    }
+  }
+}
+.kanban-board-main-panel-body{
+  display: flex;
+  border-radius: 0 0 4px 4px;
+}
+
+.kanban-board-grid-header{
+  display: flex;
+  div{
+    margin-right: 4px;
+  }
+}
+.progress-spinner{
+left: 45%;
+position: absolute;
+text-align: center;
+top: 50%;
+}
+

@@ -1,0 +1,55 @@
+<div class="sidebar-wrapper sideBarLeave" [ngClass]="{sidebarMenuExpand:isSidebarMenuExpanded || isSidebarMenuHovered}">
+  <div class="sidebar-menu sidebarMenuHover">
+    <div class="sidebar-display-container">
+      <div class="sidebar-project">
+        <div class="sidebar-project-logo">
+          <span>
+          </span>
+        </div>
+        <div class="sidebar-project-name">
+          <h2>
+            {{projecName}}
+          </h2>
+          <span>
+            Software project
+          </span>
+        </div>
+      </div>
+      <div class="sidebar-planning-container ">
+        <div class="sidebar-planning">
+          <div class="sidebar-planning__menu-header">
+            <button type="button" mat-icon-button (click)="expandPlanningMenu()">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <span>PLANNING</span>
+          </div>
+          <div class="sidebar-planning__menu-container" >
+           <ng-container *ngFor="let item of sidebarPlanningMenu">
+             <a (click)="clickSideBarButton(item)" [ngClass]="{buttonActive : activeButtonName == item.name}">
+               <span>
+                 <mat-icon
+                 *ngIf="item.svgIcon"
+                 [svgIcon]="item.svgIcon"
+                 role="img"
+                 aria-hidden="false">>
+                 </mat-icon>
+               </span>
+               <span>{{item.name}}</span>
+             </a>
+           </ng-container>
+
+
+          </div>
+        </div>
+        <div class="sidebar-planning-menu">
+          menu
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-open">
+    <button type="button" mat-icon-button class="sidebar-open-logo" (click)="expandMenu()">
+      <mat-icon [ngClass]="{transformIcon:isSidebarMenuExpanded }">keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="create-issue-modal-wrapper">
+  <app-dialog-header mat-dialog-title [title]="title" (backClick)="dialogRef.close()" [svgIcon]="'close'">
+
+  </app-dialog-header>
+  <mat-divider></mat-divider>
+  <mat-dialog-content>
+    <div class="create-issue-modal-buttons">
+      <button (click)="importIssue()">
+        Import issue
+      </button>
+      <button type="button" class="create-issue-modal-icon-button" mat-icon-button (click)="additionalOptions()">
+        <mat-icon>
+          border_color
+        </mat-icon>
+      </button>
+    </div>
+
+    <form class="create-issue-modal-form" [formGroup]="createIssueForm">
+      <mat-label>
+        Project
+      </mat-label>
+      <mat-form-field appearance="outline" matNativeControl>
+        <mat-select formControlName="project">
+          <mat-option *ngFor="let project of projectList" [value]="project.name" class="create-issue-modal-form__option">
+            {{project.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-label class="required">
+        Issue name
+      </mat-label>
+      <mat-form-field appearance="outline">
+        <input type="text" matInput placeholder="Name" formControlName="issueName">
+        <mat-error
+          *ngIf="!createIssueForm.controls['issueName'].valid && createIssueForm.controls['issueName'].touched">
+          Name is
+          <strong>
+            required
+          </strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-label class="required">
+        Issue type
+      </mat-label>
+      <mat-form-field appearance="outline" matNativeControl>
+        <mat-select formControlName="issueType">
+          <mat-option *ngFor="let issueType of issueTypesList" [value]="issueType.name"
+            class="create-issue-modal-form__option">
+            {{issueType.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-label>
+        Attachment
+      </mat-label>
+      <div appUploadFile class="attach-file" (fileDropped)="onFileDropped($event)">
+        Drop files to attach or
+        <label>
+          <input multiple
+           formControlName="uploadedFile"
+           type="file"
+           class="file-upload"
+           (change)="fileBrowseHandler($event.target)"
+           hidden
+           accept=".jpg, .jpeg, .png,.mp4,.doc,.docx,.xml">
+        <a>browse</a>
+        </label>
+      </div>
+        <div [ngClass]="{'list-uploaded-files': files.length > 0}">
+          <ng-container *ngFor="let file of files;index as index" >
+            <div class="image-container" *ngIf="file.item.type.includes('image')">
+              <img [src]="file.url">
+              <button mat-icon-button (click)="deleteFile(index)" (click)="$event.stopPropagation()" >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </ng-container>
+        </div>
+
+      <mat-label class="required">
+        Issue priority
+      </mat-label>
+      <mat-form-field appearance="outline" matNativeControl>
+        <mat-select formControlName="issuePriority">
+          <mat-option *ngFor="let issuePriority of issuePriorityList" [value]="issuePriority.name"
+            class="create-issue-modal-form__option">
+            {{issuePriority.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <a href="https://mail.ru/">Learn more</a>
+    </form>
+  </mat-dialog-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-actions class="create-issue-modal-footer">
+    <div class="create-issue-modal-footer__checkbox">
+      <section>
+        <mat-checkbox>Create another issue</mat-checkbox>
+      </section>
+    </div>
+    <div class="create-issue-modal-footer__buttons">
+      <button id="cancelButton" class="button" mat-dialog-close (click)="cancelCreatingIssue()">
+        Cancel
+      </button>
+      <button type="submit" mat-button form="createIssueForm" [attr.disabled]="!createIssueForm.valid ? true : null"
+        class="button" (click)="submit()">
+        <span>Create</span>
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

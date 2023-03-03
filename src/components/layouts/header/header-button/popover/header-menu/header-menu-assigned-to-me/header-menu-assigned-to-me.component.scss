@@ -1,0 +1,17 @@
+@import "../../../../../../../theme/variables";
+.assigned-tickets{
+// margin: 0px 6px;
+overflow-x: hidden;
+border-bottom: 1px solid $headerMenuBorderLine;
+}
+.assigned-tickets__buttons{
+  padding: 4px 0px ;
+ button{
+  font-size: 8px;
+  padding: 4px 6px;
+
+ }
+ div:hover{
+  background-color: $headerMenuHover;
+}
+}

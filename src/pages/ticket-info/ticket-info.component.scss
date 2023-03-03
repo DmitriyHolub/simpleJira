@@ -1,0 +1,13 @@
+.ticket-info-container{
+  width: 100%;
+  height: 100%;
+    .ticket-info__main-content{
+      overflow: auto;
+      width: 66%;
+      height: 100%;
+    }
+    .ticket-info__details{
+      width: 34%;
+      height: 100%;
+    }
+}
